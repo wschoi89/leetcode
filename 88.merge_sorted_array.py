@@ -9,24 +9,57 @@ To accommodate this, nums1 has a length of m + n, where the first m elements den
 and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
 '''
 
+'''
+non-decreasing order의 의미: 오름차순이거나 연속된 값이 같을 수 있음 
+ex) 1, 1, 2, 3 : non-decreasing order
+    1, 2, 3, 4 : increasing order (ascending order)
+'''
+
+from typing import List
 
 # re-take
+'''
+nums1 = [1, 2, 3, 0, 0, 0], m = 3
+nums2 = [2, 5, 6], n = 3
+Output: [1, 2, 2, 3, 5, 6]
+'''
+
 def merge(nums1, m, nums2, n):
     while m > 0 and n > 0:
-        if nums1[ m -1] >= nums2[ n -1]:
-            nums1[ m + n -1] = nums1[ m -1]
-            m -= 1
+        if nums1[m-1] <= nums2[n-1]:
+            nums1[m+n-1] = nums2[n-1]
+            n -=1
         else:
-            nums1[ m + n -1] = nums2[ n -1]
-            n -= 1
-    if n > 0:
+            nums1[m+n-1] = nums1[m-1]
+            m -=1
+
+    if n>0:
         nums1[:n] = nums2[:n]
 
-
-nums1 = [1,2,3,0,0,0]
-m = 3
-nums2 = [2,5,6]
-n = 3
+nums1 = [0]
+m = 0
+nums2 = [1]
+n = 1
 
 merge(nums1, m, nums2, n)
 print(nums1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,11 +1,17 @@
 def firstUniqChar(s: str) -> int:
-    dict_ = dict()
+    d = {}
 
-    for char in s:
-        dict_[char] = dict_.get(char, 0) + 1
+    for l in s:
+        if l not in d: d[l] = 1
+        else: d[l] +=1
 
-    for i in list(dict_.keys()):
-        if dict_[i] == 1:
-            return s.index(i)
+    index = -1
+    for i in range(len(s)):
+        if d[s[i]]==1:
+            index=i
+            break
 
-    return -1
+    return index
+
+s = "leetcode"
+print(firstUniqChar(s))

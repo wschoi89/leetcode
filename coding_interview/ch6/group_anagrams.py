@@ -20,31 +20,15 @@ output=
 from typing import List
 from collections import defaultdict
 
-def group_anagrams(input: List[str]):
 
-        dict_ = defaultdict(int)
-        for word in input:
-            # print(word)
-            # print(list(word))
-            dict_[''.join(sorted(list(word)))] +=1
+def group_anagrams(strs: List[str]):
 
-        # print(dict_)
+    groups = defaultdict(list)
 
-        num_groups = len(list(dict_.keys()))
-        # print(num_groups)
+    for word in strs:
+        groups[''.join(sorted(word))].append(word)
 
-        result = defaultdict(list)
-        # print('result: ', result)
-
-        for word in input:
-            sorted_word = ''.join(sorted(list(word)))
-            if sorted_word in dict_.keys():
-                result[sorted_word].append(word)
-
-        # print(result)
-        # print(list(result.values()))
-
-        return list(result.values())
+    return list(groups.values())
 
 
 input = ["eat", "tea", "tan", "ate", "nat", "bat"]

@@ -15,30 +15,19 @@ import re
 
 def most_common_word(paragraph: str, banned: List[str]):
 
-    print(re.sub('[^\w]', ' ', paragraph), type(re.sub('[^\w]', '', paragraph))) # paragraph에서 word가 아닌것들 제거
-    words = [word for word in (re.sub('[^\w]', ' ', paragraph).lower().split()) if word not in banned]
-    # print(words)
+     word = [word for word in re.sub('[^\w]', ' ', paragraph).lower().split() if word not in banned]
+     # 위 표현을 아래로 풀어서 작성할 수 있음
+     # para = re.sub('[^\w]', ' ', paragraph) # string
+     # para = para.lower().split() # list
+     # word = [word for word in para if word not in banned]
 
-    counts = collections.defaultdict(int)
-    for word in words:
-        counts[word] +=1
-        # print(counts)
+     counter = collections.Counter(word)
 
-    # print(max(counts, key= lambda k: counts[k]))
-
+     return counter.most_common(1)[0][0]
+    # counter.most_common(1) ('ball', 2)
 
 
 paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
 banned = ["hit"]
 
 most_common_word(paragraph, banned)
-
-from collections import defaultdict
-
-from collections import Counter
-
-counter = Counter('hello world') # Counter({'l': 3, 'o': 2, 'h': 1, 'e': 1, ' ': 1, 'w': 1, 'r': 1, 'd': 1})
-print(counter.most_common()) # [('l', 3), ('o', 2), ('h', 1), ('e', 1), (' ', 1), ('w', 1), ('r', 1), ('d', 1)]
-print(counter.most_common(1)) # [('l', 3)]
-print(counter.most_common(1)[0]) # ('l', 3)
-print(counter.most_common(1)[0][0]) # l

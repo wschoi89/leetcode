@@ -1,14 +1,16 @@
 from typing import List
 
-# https://leetcode.com/problems/contains-duplicate/
+'''
+nums = [1, 2, 3, 1]
+Output = true
 
-# Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+'''
 
-# Example 1:
-#
-# Input: nums = [1,2,3,1]
-# Output: true
 
-class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        return not len(nums) == len(set(nums))
+def contain_duplicate(nums: List[int]) -> bool:
+    return len(nums) != len(set(nums))
+
+
+data = [1, 2, 3, 1]
+print(contain_duplicate(data))
+

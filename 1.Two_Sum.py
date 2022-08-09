@@ -15,10 +15,10 @@
 def two_sum(nums, target):
     seen = {}
 
-    for i, value in enumerate(nums):
-        remaining = target - value
+    for i, v in enumerate(nums):
+        remain = target - v
 
-        if remaining in seen:
-            return [seen[remaining], i]
+        if remain in seen:
+            return [seen[remain], i]
         else:
-            seen[value] = i
+            seen[v] = i

@@ -7,14 +7,16 @@
 from typing import List
 
 
-class Solution:
-    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        dic = dict()
+
+def containsNearbyDuplicate(nums: List[int], k: int) -> bool:
+
+        dic_ = dict()
 
         for i, v in enumerate(nums):
-            if v in dic and i - dic[v] <= k:
+            if v in dic_.keys() and (i - dic_[v]) <= k:
                 return True
             else:
-                dic[v] = i
-        return False
-    
+                dic_[v] = i
+
+
+print(containsNearbyDuplicate([1,0,1,1], 1))

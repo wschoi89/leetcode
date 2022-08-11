@@ -12,27 +12,22 @@ Explanation: [9,4] is also accepted.
 
 nums1 = [4,9,5]
 nums2 = [9,4,9,8,4]
+result = []
+key_map = dict()
 
-# nums1 = [1, 2, 2, 1]
-# nums2 = [2, 2]
 
-def intersect(nums1, nums2):
-    dict1 = dict()
-    result = []
+for i, v in enumerate(nums1):
+    key_map[v] = key_map.get(v, 0) + 1
 
-    for v in nums1:
-        dict1[v] = dict1.get(v, 0) + 1
+print(key_map)
 
-    for v in nums2:
-        if v in dict1 and dict1[v] >0:
-            result.append(v)
-            dict1[v] -=1
+for i in nums2:
+    if i in key_map.keys() and key_map[i]>0:
+        result.append(i)
+        key_map[i] -=1
 
-    print(result)
-    return result
 
-# print(int(5 / 2))
-intersect(nums1, nums2)
+
 
 
 

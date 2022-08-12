@@ -1,14 +1,22 @@
+prices = [1, 0, 2, 1, 0, 3, 2, 1]
+
+
 def maxProfit(prices) -> int:
-    min_price = prices[0]
+    low_price = prices[0]
+
     max_profit = 0
 
-    for price in prices:
-        min_price = min(min_price, price)
+    for i in range(1, len(prices)):
+        high_price = prices[i]
 
-        max_profit = max(max_profit, price - min_price)
+        profit = high_price - low_price
+
+        if profit >=max_profit:
+            max_profit = profit
+
+        if low_price > high_price:
+            low_price = high_price
 
     return max_profit
 
-prices = [2, 4, 1]
 
-print(maxProfit(prices))

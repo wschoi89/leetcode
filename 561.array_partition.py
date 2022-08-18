@@ -7,3 +7,9 @@ Explanation: All possible pairings (ignoring the ordering of elements) are:
 3. (1, 2), (3, 4) -> min(1, 2) + min(3, 4) = 1 + 3 = 4
 So the maximum possible sum is 4.
 '''
+
+nums = [1, 4, 3, 2]
+
+nums.sort()
+
+print(sum(sorted(nums[::2])))

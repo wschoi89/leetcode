@@ -1,50 +1,38 @@
+from typing import List
 
-nums = [-1, 0, 1, 2, -1, -4]
-# nums = [0, 1, 1]
-# nums = [0, 0, 0]
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        result = []
+        nums.sort()
 
+        for num in range(0, len(nums) - 2):
+            if num > 0 and nums[num] == nums[num - 1]:
+                continue
+            value_i = nums[num]
 
-results = []
-nums.sort()
+            idx_left = num + 1
+            idx_right = len(nums) - 1
 
-print(nums)
+            while idx_left < idx_right:
+                value_j = nums[idx_left]
+                value_k = nums[idx_right]
 
-result = []
+                sum = value_i + value_j + value_k
 
-for i in range(0, len(nums)-2):
+                if sum == 0:
+                    result.append([value_i, value_j, value_k])
+                    idx_left += 1
 
+                    while nums[idx_left] == nums[idx_left - 1] and idx_left < idx_right:
+                        idx_left += 1
 
-    if i>0 and nums[i] == nums[i-1]:
-        continue
-    idx_l, idx_r = i+1, len(nums)-1
+                    while nums[idx_right] == nums[idx_right - 1] and idx_left < idx_right:
+                        idx_right -= 1
 
-    while idx_l < idx_r:
-        sum = nums[i] + nums[idx_l] + nums[idx_r]
+                elif sum > 0:
+                    idx_right -= 1
 
+                else:
+                    idx_left += 1
 
-        if sum < 0:
-            idx_l += 1
-        elif sum > 0:
-            idx_r -= 1
-        else:
-            result.append([nums[i], nums[idx_l], nums[idx_r]])
-
-            while nums[idx_l] == nums[idx_l+1]:
-                idx_l +=1
-
-            while nums[idx_r] == nums[idx_r-1]:
-                idx_r -=1
-
-            idx_l += 1
-            idx_r -= 1
-
-print(result)
-
-
-
-
-
-
-
-
-
+        return result

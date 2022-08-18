@@ -1,17 +1,19 @@
+from collections import defaultdict
+
 def firstUniqChar(s: str) -> int:
-    d = {}
+    characters = defaultdict(int)
 
-    for l in s:
-        if l not in d: d[l] = 1
-        else: d[l] +=1
+    for char in s:
+        characters[char] +=1
 
-    index = -1
+    # for key in characters.keys():
+    #     if characters[key] ==1:
+    #         charac = key
+    #         return list(s).index(charac)
+
     for i in range(len(s)):
-        if d[s[i]]==1:
-            index=i
-            break
+        if characters[s[i]] ==1:
+            return 1
 
-    return index
-
-s = "leetcode"
-print(firstUniqChar(s))
+    else:
+        return -1

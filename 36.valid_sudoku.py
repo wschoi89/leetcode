@@ -1,7 +1,6 @@
 # 3rules
 from typing import List
-from collections import defaultdict
-board = \
+    board = \
 [["5","3",".",".","7",".",".",".","."]
 ,["6",".",".","1","9","5",".",".","."]
 ,[".","9","8",".",".",".",".","6","."]
@@ -12,27 +11,29 @@ board = \
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]
 
-def isValidSudoku(board: List[List[str]])->bool:
-    dict_rows = defaultdict(set)
-    dict_cols = defaultdict(set)
-    dict_box = defaultdict(set)
 
-    rows, cols = len(board), len(board[0])
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        from collections import defaultdict
 
-    for r in range(rows):
-        for c in range(cols):
-            if board[r][c] == '.':
-                continue
+        rows = defaultdict(set)
+        cols = defaultdict(set)
+        boxes = defaultdict(set)
 
-            if (board[r][c] in dict_rows[r]) or (board[r][c] in dict_cols[c]) or (board[r][c] in dict_box[(r // 3,c // 3)]):
-                return False
-            else:
-                dict_rows[r].add(board[r][c])
-                dict_cols[c].add(board[r][c])
-                dict_box[(r//3,c//3)].add(board[r][c])
+        for i in range(len(board)):
+            for j in range(len(board[0])):
 
-    print(dict_box)
-    return True
+                if board[i][j] == '.':
+                    continue
 
+                if board[i][j] in rows[i] or \
+                        board[i][j] in cols[j] or \
+                        board[i][j] in boxes[(i // 3, j // 3)]:
 
-print(isValidSudoku(board))
+                    return False
+                else:
+                    rows[i].add(board[i][j])
+                    cols[j].add(board[i][j])
+                    boxes[(i // 3, j // 3)].add(board[i][j])
+
+        return True

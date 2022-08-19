@@ -1,19 +1,16 @@
-from collections import defaultdict
+s = 'leetcode'
 
-def firstUniqChar(s: str) -> int:
-    characters = defaultdict(int)
 
-    for char in s:
-        characters[char] +=1
 
-    # for key in characters.keys():
-    #     if characters[key] ==1:
-    #         charac = key
-    #         return list(s).index(charac)
+def first_uniq_char(s: str)->int:
+
+    from collections import Counter
+    counter = Counter(s)
 
     for i in range(len(s)):
-        if characters[s[i]] ==1:
-            return 1
+        if counter.get(s[i]) ==1:
+            return i
 
-    else:
-        return -1
+    return -1
+
+print(first_uniq_char(s))

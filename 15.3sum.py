@@ -1,38 +1,36 @@
 from typing import List
 
-class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
-        result = []
-        nums.sort()
+def threeSum(nums: List[int]) -> List[List[int]]:
+    result = []
 
-        for num in range(0, len(nums) - 2):
-            if num > 0 and nums[num] == nums[num - 1]:
-                continue
-            value_i = nums[num]
+    nums.sort()
 
-            idx_left = num + 1
-            idx_right = len(nums) - 1
+    for i in range(len(nums) - 2):
 
-            while idx_left < idx_right:
-                value_j = nums[idx_left]
-                value_k = nums[idx_right]
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
 
-                sum = value_i + value_j + value_k
+        left = i + 1
+        right = len(nums) - 1
 
-                if sum == 0:
-                    result.append([value_i, value_j, value_k])
-                    idx_left += 1
+        while left < right:
+            if nums[i] + nums[left] + nums[right] == 0:
+                result.append([nums[i], nums[left], nums[right]])
+                left += 1
+                right -= 1
 
-                    while nums[idx_left] == nums[idx_left - 1] and idx_left < idx_right:
-                        idx_left += 1
+                while nums[left] == nums[left - 1] and left < right:
+                    left += 1
 
-                    while nums[idx_right] == nums[idx_right - 1] and idx_left < idx_right:
-                        idx_right -= 1
+                while nums[right] == nums[right + 1] and left < right:
+                    right -= 1
 
-                elif sum > 0:
-                    idx_right -= 1
+            elif nums[i] + nums[left] + nums[right] > 0:
+                right -= 1
 
-                else:
-                    idx_left += 1
+            else:
+                left += 1
 
-        return result
+    return result
+
+

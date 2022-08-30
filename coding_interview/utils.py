@@ -1,11 +1,18 @@
 import time
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
+    def print_all(self):
+        cur = self
 
+        while cur:
+            print(cur.val, end=" ")
+            cur = cur.next
+        print()
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -19,6 +26,11 @@ class LinkedList:
         else:
             self.tail.next = node
         self.tail = node
+
+    def inserts(self, values:iter):
+        for value in values:
+            self.insert(value)
+
 
     def print(self):
         cur = self.head

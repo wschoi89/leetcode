@@ -5,18 +5,40 @@ linked_list.inserts([1, 2, 3, 4, 5])
 # output : 5->4->3->2->1->NULL
 linked_list.print()
 
-head = linked_list.head
 
-cur = None
+def reverse_list(head: ListNode) -> ListNode:
 
-while head is not None:
-    new_node = ListNode(head.val)
+    prev = None
+    cur = head
 
-    if cur is not None:
-        new_node.next = cur
+    while cur:
+        # post = cur.next
+        # cur.next = prev
+        # prev = cur
+        # cur = post
 
-    cur = new_node
+        post, cur.next = cur.next, prev
 
-    head = head.next
+        prev, cur = cur, post
 
-print('cur: ', cur.print_all())
+    return prev
+
+
+result = reverse_list(linked_list.head)
+result.print_all()
+
+
+
+
+
+
+
+
+
+    # cur, prev = head, None
+    #
+    # while cur:
+    #     next, cur.next = cur.next, prev
+    #     prev, cur = cur, next
+    #
+    # return prev

@@ -8,20 +8,16 @@ linked_list.print()
 
 def reverse_list(head: ListNode) -> ListNode:
 
-    prev = None
-    cur = head
+    tail, cur = None, head
 
     while cur:
-        # post = cur.next
-        # cur.next = prev
-        # prev = cur
-        # cur = post
+        post = cur.next
+        cur.next = tail
+        
+        tail = cur
+        cur = post
 
-        post, cur.next = cur.next, prev
-
-        prev, cur = cur, post
-
-    return prev
+    return tail
 
 
 result = reverse_list(linked_list.head)

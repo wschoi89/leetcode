@@ -34,7 +34,7 @@ class LinkedList:
 
     def print(self):
         cur = self.head
-
+        print('linked list:', end=" ")
         while cur:
             print(cur.val, end=" ")
             cur = cur.next

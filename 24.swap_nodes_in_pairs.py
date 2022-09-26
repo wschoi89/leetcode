@@ -36,25 +36,25 @@ linked_list.inserts([1, 2, 3, 4])
 
 def swapPairs(head: ListNode) -> [ListNode]:
 
-    dummy = ListNode(0, head)
-
-    prev, cur = dummy, head
+    if head is None or head.next is None:
+        return head
+    
+    prev = ListNode()
+    dummy = head.next
+    cur = head
 
     while cur and cur.next:
-        # save ptrs
-        next_pair = cur.next.next # 3
-        second = cur.next # 2
+        post = cur.next
+        next_pair = post.next
 
-        # reverse this pair
-        second.next = cur # 2->1
-        cur.next = next_pair # 2->1->3
+        post.next = cur
+        cur.next = next_pair
 
-        prev.next = second
-
+        prev.next = post
         prev = cur
         cur = next_pair
 
-    return dummy.next
+    return dummy
 
 
 

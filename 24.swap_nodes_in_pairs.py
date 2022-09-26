@@ -60,4 +60,3 @@ def swapPairs(head: ListNode) -> [ListNode]:
 
 result = swapPairs(linked_list.head)
 result.print_all()
-

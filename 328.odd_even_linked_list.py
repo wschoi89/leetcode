@@ -2,32 +2,34 @@ from coding_interview.utils import LinkedList, ListNode
 from typing import Optional
 
 L1 = LinkedList()
-L1.inserts([1, 2, 3, 4, 5, 6, 7, 8])
+L1.inserts([1, 2, 3, 4, 5])
 
 def oddEvenList(head: Optional[ListNode]) -> Optional[ListNode]:
 
-    head_odd = head
-    head_even = head_odd.next
+    odd_cur = head
+    if odd_cur is None: # []
+        return odd_cur
 
-    cur_odd = head_odd
-    cur_even = head_even
+    if odd_cur.next is None:  # [1]
+        return odd_cur
 
-    while cur_even and cur_even.next:
-        post_odd = cur_odd.next.next if cur_odd.next else None
-        post_even = cur_even.next.next if cur_even.next else None
+    even_head = odd_cur.next
+    even_cur = even_head
 
-        cur_odd.next = post_odd
-        cur_even.next = post_even
+    while even_cur and even_cur.next:
+        odd_cur.next = even_cur.next
+        odd_cur = odd_cur.next
 
-        cur_odd = post_odd
-        cur_even = post_even
+        even_cur.next = odd_cur.next
+        even_cur = even_cur.next
 
-    cur_odd.next = head_even
+    odd_cur.next = even_head
 
-    return head_odd
+    return head
+
+
+
 
 
 result = oddEvenList(L1.head)
 result.print_all()
-
-

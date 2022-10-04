@@ -1,5 +1,5 @@
 from typing import List
-from coding_interview.utils import my_timer
+from utils import my_timer
 string = ['a', 'b', 'c'] * 100000
 
 

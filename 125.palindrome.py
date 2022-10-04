@@ -1,4 +1,4 @@
-from coding_interview.utils import my_timer
+from utils import my_timer
 str1 = "A man, a plan, a canal: Panama"*10000
 
 # 1. list로 변환

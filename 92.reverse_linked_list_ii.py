@@ -1,4 +1,4 @@
-from coding_interview.utils import LinkedList, ListNode
+from utils import LinkedList, ListNode
 from typing import Optional
 
 l1 = LinkedList()

@@ -8,7 +8,7 @@
 # output = 7->0->8
 
 
-from coding_interview.utils import LinkedList, ListNode
+from utils import LinkedList, ListNode
 
 
 l1 = LinkedList()

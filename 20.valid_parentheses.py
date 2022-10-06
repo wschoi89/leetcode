@@ -7,31 +7,23 @@ s5 = '('
 s6 = ']'
 s7 = "(){}}{"
 
+
 def is_valid(s: str) -> bool:
+    bracket_pairs = {
+        ")": "(",
+        "}": "{",
+        "]": "["
+    }
 
-    pairs = defaultdict(str)
-
-    pairs['('] = ')'
-    pairs['['] = ']'
-    pairs['{'] = '}'
-
-    stack = list()
+    stack = []
     for ch in s:
-        if len(stack) == 0 and ch in pairs.values():
-            return False
-
-        if ch in ['(', '{', '[']:
+        if ch in bracket_pairs.values():
             stack.append(ch)
 
-        elif pairs[stack[-1]] == ch:
-            stack.pop()
-        else:
+        elif len(stack) == 0 or bracket_pairs[ch] != stack.pop():
             return False
 
-    if len(stack) == 0:
-        return True
-    else:
-        return False
+    return len(stack) == 0
 
 
 result = is_valid(s7)

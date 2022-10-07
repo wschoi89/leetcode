@@ -5,27 +5,27 @@ def trap(height: List[int])->int:
     if not height:
         return 0
 
-    volume = 0
-    left, right = 0, len(height) - 1
-    left_max, right_max = height[left], height[right]
+    result = 0
+    left_max, right_max = [0] * len(height), [0] * len(height)
 
-    while left < right:
-        left_max, right_max = max(height[left], left_max), \
-                              max(height[right], right_max)
+    # left_max, right_max = height[0], max(height[1:])
+    for i in range(1, len(height)):
+        left_max[i] = max(left_max[i-1], height[i-1])
 
-        if left_max <= right_max:
-            volume +=left_max - height[left]
-            left+=1
+    for i in range(len(height)-2, -1, -1):
+        right_max[i] = max((right_max[i+1], height[i+1]))
 
-        else:
-             volume += right_max - height[right]
-             right -=1
+    for i in range(len(height)):
+        water_level = min(left_max[i], right_max[i])
 
-    return volume
+        if water_level >=height[i]:
+            result += water_level - height[i]
+
+    return result
 
 
-# height = [5, 0, 1, 2, 3, 4, 5]
-height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+height = [0,1,0,2,1,0,1,3,2,1,2,1] # answer = 6
+# height = [4,2,0,3,2,5]
 
 vol = trap(height)
 print(vol)

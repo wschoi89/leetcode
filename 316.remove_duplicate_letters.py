@@ -1,25 +1,27 @@
-s = "cbacdcbc"
+s = "abacb"
 
 from collections import Counter
 
-counter = Counter(s)
-seen = set()
+# pairs = {"a":1, "b":2, "c":2}
+pairs = Counter(s)
+print('pairs: ', pairs)
+
+# print([k>'b' for k, v in pairs.items() if pairs[k]==1])
+# print(all([k>'b' for k, v in pairs.items() if pairs[k]==1]))
+
 stack = []
 
 for ch in s:
-    counter[ch] -=1
 
-    if ch in seen:
+    pairs[ch] -= 1
+
+    if not ch in stack:
+
+        while stack and stack[-1] > ch and pairs[stack[-1]] != 0:
+            stack.pop()
+
+    if ch in stack:
         continue
-
-    # 뒤에 붙일 문자가 남아있다면 스택에서 제거
-    while stack and ch < stack[-1] and counter[stack[-1]] > 0:
-        seen.remove(stack.pop())
-
     stack.append(ch)
-    seen.add(ch)
 
-print(''.join(stack))
-
-
-
+print(stack)

@@ -6,17 +6,22 @@ class ListNode:
         self.val = val
         self.next = next
 
-    def print_all(self):
+    def print_from_current(self):
         cur = self
 
         while cur:
             print(cur.val, end=" ")
             cur = cur.next
-        print()
+        print("")
+
+
 class LinkedList:
-    def __init__(self):
+    def __init__(self, values: iter):
         self.head = None
         self.tail = None
+
+        if values:
+            self.inserts(values)
 
     def insert(self, value):
         node = ListNode(value)
@@ -30,7 +35,6 @@ class LinkedList:
     def inserts(self, values:iter):
         for value in values:
             self.insert(value)
-
 
     def print(self):
         cur = self.head

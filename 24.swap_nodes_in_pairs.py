@@ -12,8 +12,7 @@ from utils import LinkedList, ListNode
 # input: [1]
 # output: [1]
 
-linked_list = LinkedList()
-linked_list.inserts([1, 2, 3, 4])
+linked_list = LinkedList([1, 2, 3, 4])
 
 
 
@@ -29,11 +28,9 @@ linked_list.inserts([1, 2, 3, 4])
 # input: [1]
 # output: [1]
 
-linked_list = LinkedList()
-linked_list.inserts([1, 2, 3, 4])
 
 
-def swapPairs(head: ListNode) -> [ListNode]:
+def swapPairs(head: ListNode) -> ListNode:
 
     if head is None or head.next is None:
         return head
@@ -58,4 +55,4 @@ def swapPairs(head: ListNode) -> [ListNode]:
 
 
 result = swapPairs(linked_list.head)
-result.print_all()
+result.print_from_current()

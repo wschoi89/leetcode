@@ -1,8 +1,8 @@
 from utils import LinkedList, ListNode
 from typing import Optional
 
-L1 = LinkedList()
-L1.inserts([1, 2, 3, 4, 5])
+L1 = LinkedList([1, 2, 3, 4, 5])
+
 
 def oddEvenList(head: Optional[ListNode]) -> Optional[ListNode]:
 
@@ -32,4 +32,4 @@ def oddEvenList(head: Optional[ListNode]) -> Optional[ListNode]:
 
 
 result = oddEvenList(L1.head)
-result.print_all()
+result.print_from_current()

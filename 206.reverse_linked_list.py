@@ -1,7 +1,7 @@
 from utils import LinkedList, ListNode
 
-linked_list = LinkedList()
-linked_list.inserts([1, 2, 3, 4, 5])
+linked_list = LinkedList([1, 2, 3, 4, 5])
+
 # output : 5->4->3->2->1->NULL
 linked_list.print()
 
@@ -23,5 +23,5 @@ def reverse_list(head: ListNode) -> ListNode:
 
 result = reverse_list(linked_list.head)
 
-result.print_all()
+result.print_from_current()
 

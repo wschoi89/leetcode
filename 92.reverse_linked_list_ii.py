@@ -1,10 +1,9 @@
 from utils import LinkedList, ListNode
 from typing import Optional
 
-l1 = LinkedList()
-l1.inserts([1,2,3,4,5])
-
+l1 = LinkedList([1, 2, 3, 4, 5])
 left, right = 2, 4
+
 
 def reverseBetween(self, head: Optional[ListNode], left: int, right: int):
     # phase 1

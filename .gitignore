@@ -1,5 +1,5 @@
 .idea/
-.idea/cote.iml
-.idea/misc.xml
 coding_interview/__pycache__
+
 __pycache__/
+*.pyc
